@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lensa Matura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/Design Login.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-card">
+            <div class="logo-section">
+                <img src="Material/Logo Lensa Matura - Colored.png" alt="Logo Lensa Matura" class="logo">
+                <h2>Selamat Datang</h2>
+                <p class="subtitle">Portal Event Lensa Matura</p>
+            </div>
+
+            <!------- FORMAT LOGIN ------->
+            <form id="loginForm">
+                <!-- NIS -->
+                <div class="input-group">
+                    <input type="text" id="nis" required placeholder=" " autocomplete="off">
+                    <label for="nis">Nomor Induk Siswa (NIS)</label>
+                    <span class="focus-border"></span>
+                </div>
+
+                <!-- KATA SANDI -->
+                <div class="input-group">
+                    <input type="password" id="sandi" required placeholder=" ">
+                    <label for="sandi">Kata Sandi</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="message-box" id="message"></div>
+
+                <!-- SUBMIT/MASUK -->
+                <button type="submit" id="loginBtn">
+                    <span class="btn-text">Masuk</span>
+                    <div class="loader" id="btn-loader"></div>
+                </button>
+            </form>
+            
+            <!-- FOOTER -->
+            <div class="footer-text">
+                <p>&copy; 2025 Lensa Matura Organizers</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="full-page-loader" class="loader-overlay hidden">
+        <div class="portal-scene" id="portalScene">
+            <img src="Material/Logo Lensa Matura (1).svg" alt="Logo Lensa Matura" class="portal-logo" id="portalLogo">
+        </div>
+        <div class="loading-text">Memasuki Lensa Matura...</div>
+    </div>
+    <script src="JavaScript/Login.js"></script>
+</body>
+</html>

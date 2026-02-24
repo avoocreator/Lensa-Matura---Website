@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Juara Lomba - Lensa Matura</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/Design Announcement.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+</head>
+
+<body>
+    <!-------------------- HEADER ---------------------->
+    <header class="header">
+        <div class="logo">
+            <img src="Material/Logo Lensa Matura (1).png" alt="Logo Lensa Matura"> 
+        </div>
+
+        <!-- JUDUL UTAMA -->
+        <div class="nav-title">LENSA MATURA</div>
+
+        <!-- NAVIGASI BUTTON -->
+        <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="hamburger-icon"></span>
+        </button>
+
+        <!-- NAVIGASI MENU -->
+        <nav class="nav-menu" id="primary-navigation" data-visible="false">
+            <ul>
+                <li><a href="Beranda.html">Beranda</a></li>
+                <li><a href="Announcement.html">Pengumuman</a></li>
+                <li><a href="About Us.html">Tentang Kami</a></li>
+                <li><a href="Index.html">Keluar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section class="announcement-section">
+            <h2>🥇 Podium Juara Utama 🥇</h2>
+
+            <div class="podium-container">
+
+                <div class="podium-item second">
+                    <span class="rank">2</span>
+                    <div class="name-box"></div>
+                    <div class="podium-block"></div>
+                </div>
+
+                <div class="podium-item first">
+                    <span class="rank">1</span>
+                    <div class="name-box"></div>
+                    <div class="podium-block"></div>
+                </div>
+
+                <div class="podium-item third">
+                    <span class="rank">3</span>
+                    <div class="name-box"></div>
+                    <div class="podium-block"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="announcement-section">
+            <h2>Daftar Juara Selengkapnya</h2>
+
+            <div id="juara-list" class="juara-tabel">
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p id="copyright"></p>
+
+        <div class="support-title">Supported by</div>
+
+        <div class="support-logos">
+            <a href="https://sman1kraksaan.sch.id/">
+                <img src="Material/LOGO SMAN 1 KRAKSAAN 2021 (2).png" alt="Logo Sekolah">
+            </a>
+            <a
+                href="https://oskamatura.or.id/?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4CGNhbGxzaXRlAjE1AAGnRUWjmjtzgsfXZTH1R37w1xVDjYrJOhqRkFFWbXSxh_SoINdqodmBU3h3uhM_aem_1ANWNKMwXLjXWLQP_HPrbA">
+                <img src="Material/LOGO OSKAMATURA (1).png" alt="Logo OSIS">
+            </a>
+        </div>
+    </footer>
+    <script src="JavaScript/Copyright.js"></script>
+    <script src="JavaScript/Announcement.js"></script>
+    <script src="JavaScript/Navigation.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,515 @@
+/* Palet Warna Inti: Ungu Utama: #5D3E83, Ungu Sekunder: #A592C4, Latar Belakang: #F8F8FF */
+html {
+    overflow-x: hidden;
+}
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8FF;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* --- Header: Sticky & Blur dengan Struktur Baru --- */
+.header {
+    display: flex;
+    align-items: center;
+    /* Memisahkan 3 elemen (Logo, Judul, Tombol) */
+    justify-content: space-between; 
+    padding: 15px 50px;
+    background: rgba(111, 58, 138, 0.85); /* Ungu Transparan */
+    
+    /* Efek Glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.nav-title {
+    font-size: 35px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* PENTING: Untuk memusatkan teks secara visual di Flexbox */
+    flex-grow: 1; 
+    text-align: center;
+}
+
+/* ==========================================================
+// 2. NAVIGASI HAMBURGER ICON
+// ========================================================== */
+.nav-toggle {
+    /* Hapus 'position: fixed' agar mengikuti Flexbox */
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 300;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff; /* Putih agar kontras */
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    top: 8px;
+}
+
+/* Animasi Ikon menjadi X saat terbuka */
+.nav-toggle[aria-expanded="true"] .hamburger-icon {
+    background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background: rgba(111, 58, 138, 0.95);
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    padding-top: 100px;
+    
+    /* Perintah untuk Akselerasi Hardware & Sembunyikan */
+    will-change: transform;
+    transform: translateX(100%) translateZ(0); 
+    
+    /* PENTING: Transisi yang lebih panjang (0.4s) dengan kurva yang lebih smooth */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 200;
+}
+
+/* KONDISI BUKA (Menggunakan CSS untuk animasi) */
+.nav-menu[data-visible="true"] {
+    /* Perintah Akselerasi Hardware */
+    transform: translateX(0) translateZ(0); 
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white; 
+    border-bottom: 1px solid white;
+    transition: background 0.2s ease;
+}
+
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Main Content Container (Sisanya Sama) --- */
+main {
+    padding: 40px;
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.announcement-section h2 {
+    color: #5D3E83;
+    border-bottom: 2px solid #E0E0E0;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #E0E0E0;
+    margin: 40px 0;
+}
+
+/* -------------------- ANIMASI PODIUM START -------------------- */
+
+/* Keyframes untuk Animasi Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframes untuk Podium Naik */
+@keyframes podium-rise {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Tampilan Podium --- */
+.podium-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 30px;
+    margin: 50px auto;
+
+    /* Animasi Fade In Awal */
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
+.podium-container.loaded {
+    opacity: 1;
+}
+
+.podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 140px;
+    flex-grow: 1;
+}
+
+.rank {
+    font-size: 3em;
+    font-weight: 900;
+    color: #5D3E83;
+    margin-bottom: 10px;
+    opacity: 0;
+    /* Mulai tidak terlihat, akan dianimasikan */
+}
+
+.name-box {
+    background-color: #A592C4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 700;
+    box-shadow: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+
+    /* MODIFIKASI: Sembunyikan nama di awal dan atur transisi */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease-out;
+}
+
+.podium-block {
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    height: 0;
+    /* Mulai dari 0 */
+    opacity: 0;
+    /* Mulai dari tidak terlihat */
+}
+
+/* Ketinggian dan Warna Podium */
+.podium-item.first .podium-block {
+    background: linear-gradient(to top, #5D3E83, #6E4A99);
+}
+
+.podium-item.first .name-box {
+    background-color: gold;
+    color: #333333;
+}
+
+.podium-item.second .podium-block {
+    background: linear-gradient(to top, #7A5DA7, #9B82C4);
+}
+
+.podium-item.second .name-box {
+    background-color: silver;
+    color: #333333;
+}
+
+.podium-item.third .podium-block {
+    background: linear-gradient(to top, #9B82C4, #C0B0D8);
+}
+
+.podium-item.third .name-box {
+    background-color: #CD7F32;
+    color: white;
+}
+
+/* ANIMASI RISE PODIUM (Dipicu oleh JS menambahkan kelas .animate) */
+.podium-item.first.animate .podium-block {
+    height: 180px;
+    animation: podium-rise 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+    /* Juara 1 (muncul kedua) */
+}
+
+.podium-item.second.animate .podium-block {
+    height: 120px;
+    animation: podium-rise 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+    /* Juara 2 (muncul pertama) */
+}
+
+.podium-item.third.animate .podium-block {
+    height: 80px;
+    animation: podium-rise 0.8s ease-out forwards;
+    animation-delay: 0.8s;
+    /* Juara 3 (muncul ketiga) */
+}
+
+/* Animasi Rank (Nomor) */
+.podium-item.animate .rank {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 1.3s;
+    /* Muncul setelah balok naik */
+}
+
+/* MODIFIKASI: Animasi Nama Kelas */
+.podium-item.animate .name-box {
+    opacity: 1;
+    transform: translateY(0);
+    /* Munculkan setelah balok naik dan nomor muncul */
+    transition-delay: 1.5s;
+}
+
+
+/* Urutan tampilan podium */
+.podium-item.first {
+    order: 2;
+}
+
+.podium-item.second {
+    order: 1;
+}
+
+.podium-item.third {
+    order: 3;
+}
+
+/* -------------------- ANIMASI PODIUM END -------------------- */
+
+
+/* -------------------- ANIMASI TABEL START -------------------- */
+
+/* Keyframes untuk fade in baris tabel (Staggered) */
+@keyframes row-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Tampilan Tabel (Minimalis) --- */
+
+.juara-tabel {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.juara-tabel table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+
+    opacity: 0;
+    /* Mulai dari tidak terlihat */
+    transition: opacity 0.5s ease-out 2.5s;
+    /* Fade-in keseluruhan tabel setelah confetti dan podium selesai */
+}
+
+.juara-tabel.loaded table {
+    opacity: 1;
+}
+
+.juara-tabel th,
+.juara-tabel td {
+    border: none;
+    border-bottom: 1px solid #EFEFEF;
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.juara-tabel th {
+    background-color: #F5F5F5;
+    color: #5D3E83;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.juara-tabel tr {
+    transition: background-color 0.2s ease;
+    opacity: 0;
+    /* Semua baris tabel tidak terlihat di awal */
+
+    /* Animasi Baris menggunakan Custom Property --row-index dari JS */
+    animation: row-fade-in 0.4s ease-out forwards;
+    /* Mulai setelah animasi podium selesai (sekitar 2.5s) */
+    animation-delay: calc(2.5s + var(--row-index) * 0.05s);
+}
+
+.juara-tabel tr:nth-child(even) {
+    background-color: white;
+}
+
+.juara-tabel tr:nth-child(odd) {
+    background-color: #FAFAFA;
+}
+
+.juara-tabel tr:hover {
+    background-color: #E0E0E0;
+}
+
+/* -------------------- ANIMASI TABEL END -------------------- */
+
+
+/* Pesan Status */
+.loading,
+.error-message,
+.no-data {
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+    color: #7A5DA7;
+}
+
+.footer {
+    background: white;
+    margin-top: 60px;
+    padding: 40px 0;
+    border-top: 1px solid #eee;
+    /* Tambahan untuk styling footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.support-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    margin-top: 20px;
+}
+
+.support-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.support-logos img {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: 0.4s;
+    height: 60px;
+}
+
+.support-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .Banner {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .Banner-left,
+    .hero-right {
+        width: 100%;
+    }
+
+    .slider {
+        min-height: 200px;
+        max-height: 300px;
+    }
+
+    .bottom-container {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+
+    .header {
+        padding: 15px 20px;
+    }
+
+    .nav-title {
+        font-size: 20px;
+    }
+}

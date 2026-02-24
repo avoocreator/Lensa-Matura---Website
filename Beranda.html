@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lensa Matura</title>
+  <link rel="stylesheet" href="Style/Design Bearnda.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+  <!--------------------------------- HEADER ------------------------------------->
+  <header class="header">
+    <div class="logo">
+      <img src="Material/Logo Lensa Matura (1).png" alt="Logo Lensa Matura">
+    </div>
+
+    <!---------- JUDUL UTAMA ---------->
+    <div class="nav-title">LENSA MATURA</div>
+
+    <!-------- NAVIGASI BUTTON ---------->
+    <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+      <span class="hamburger-icon"></span>
+    </button>
+
+    <!---------- NAVIGASI MENU ----------->
+    <nav class="nav-menu" id="primary-navigation" data-visible="false">
+      <ul>
+        <li><a href="Beranda.html">Beranda</a></li>
+        <li><a href="Announcement.html">Pengumuman</a></li>
+        <li><a href="About Us.html">Tentang Kami</a></li>
+        <li><a href="Index.html">Keluar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!------------ BANNER EVENT ------------>
+  <section class="Banner">
+    <div class="Banner-left">
+
+      <div class="slider" id="slider">
+        <a href="Banner 1.html" class="slide"><img src="Material/Banner Classmerting.jpg" alt="Banner 1"></a>
+        <a href="Banner 2.html" class="slide"><img src="Material/Banner Pondok Ramadhan.jpg" alt="Banner 2"></a>
+        <a href="Banner 3.html" class="slide"><img src="Material/Banner Hari Pendidikan.jpg" alt="Banner 3"></a>
+        <a href="Banner 4.html" class="slide"><img src="Material/Banner Hari Pahlawan.jpg" alt="Banner 3"></a>
+      </div>
+
+      <div class="dots" id="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+    <!------------ QUICK ACCESS ------------>
+    <div class="hero-right">
+      <!------------ TENTANG KAMI ------------>
+      <a href="About Us.html" class="info-box">
+        <h1>Lensa Matura - Tentang Kami</h1>
+        <p1>Sebuah Forum Diskusi Terbuka Organisasi Siswa Intra Sekolah</p1>
+      </a>
+
+      <!------------ PENGUMUMAN EVENT ------------>
+      <a href="Announcement.html" class="info-box pink">
+        <h2>Pengumuman Pemenang Event</h2>
+        <p2>Lihat siapa yang menduduki podium juara</p2>
+      </a>
+    </div>
+  </section>
+  
+  <hr>
+
+  <div class="bottom-container">
+    <!------- STATISTIK KEGIATAN ------->
+    <div class="box chart-box">
+      <h2>Statistik Kegiatan</h2>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <!------- TABEL HASIL VOTING ------->
+    <div class="box table-box">
+      <h2>Hasil Voting Kegiatan</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Kegiatan</th>
+            <th>Peminat</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <!------- KALENDER EVENT ------->
+    <div class="box calendar-box">
+      <h2>Kalender</h2>
+
+      <!-- Header -->
+      <div class="calendar-header">
+        <button id="prevMonth">⟨</button>
+        <span id="monthYear"></span>
+        <button id="nextMonth">⟩</button>
+      </div>
+
+      <div class="calendar-wrapper">
+
+        <div class="calendar">
+
+          <div class="weekdays">
+            <div>Min</div>
+            <div>Sen</div>
+            <div>Sel</div>
+            <div>Rab</div>
+            <div>Kam</div>
+            <div>Jum</div>
+            <div>Sab</div>
+          </div>
+
+          <div class="calendar-grid" id="calendarDays"></div>
+
+        </div>
+
+      </div>
+
+      <div id="eventTooltip"></div>
+    </div>
+  </div>
+
+  <!------------------- FOOTER ---------------------->
+  <footer class="footer">
+    <p id="copyright"></p>
+
+    <div class="support-title">Supported by</div>
+
+    <div class="support-logos">
+      <a href="https://sman1kraksaan.sch.id/">
+        <img src="Material/LOGO SMAN 1 KRAKSAAN 2021 (2).png" alt="Logo Sekolah">
+      </a>
+      <a
+        href="https://oskamatura.or.id/?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4CGNhbGxzaXRlAjE1AAGnRUWjmjtzgsfXZTH1R37w1xVDjYrJOhqRkFFWbXSxh_SoINdqodmBU3h3uhM_aem_1ANWNKMwXLjXWLQP_HPrbA">
+        <img src="Material/LOGO OSKAMATURA (1).png" alt="Logo OSIS">
+      </a>
+    </div>
+  </footer>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="JavaScript/Banner UI.js"></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+  <script src="JavaScript/Data.js"></script>
+  <script src="JavaScript/Copyright.js"></script>
+  <script src="JavaScript/Navigation.js"></script>
+</body>
+
+</html>

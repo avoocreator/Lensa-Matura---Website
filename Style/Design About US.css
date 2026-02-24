@@ -1,0 +1,464 @@
+/* Reset & Base Styles */
+:root {
+    --primary: #6a4c93;
+    /* Ungu Logo */
+    --secondary: #9d7ec4;
+    /* Ungu Muda */
+    --dark: #2d2d2d;
+    --light: #f9f9f9;
+    --white: #ffffff;
+    --gradient: linear-gradient(135deg, #583e7e 0%, #9d7ec4 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    /* Memisahkan 3 elemen (Logo, Judul, Tombol) */
+    justify-content: space-between; 
+    padding: 15px 50px;
+    background: rgba(111, 58, 138, 0.85); /* Ungu Transparan */
+    
+    /* Efek Glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.nav-title {
+    font-size: 35px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* PENTING: Untuk memusatkan teks secara visual di Flexbox */
+    flex-grow: 1; 
+    text-align: center;
+}
+
+/* ==========================================================
+// 2. NAVIGASI HAMBURGER ICON
+// ========================================================== */
+.nav-toggle {
+    /* Hapus 'position: fixed' agar mengikuti Flexbox */
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 300;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff; /* Putih agar kontras */
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    top: 8px;
+}
+
+/* Animasi Ikon menjadi X saat terbuka */
+.nav-toggle[aria-expanded="true"] .hamburger-icon {
+    background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background: rgba(111, 58, 138, 0.95);
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    padding-top: 100px;
+    
+    /* Perintah untuk Akselerasi Hardware & Sembunyikan */
+    will-change: transform;
+    transform: translateX(100%) translateZ(0); 
+    
+    /* PENTING: Transisi yang lebih panjang (0.4s) dengan kurva yang lebih smooth */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 200;
+}
+
+/* KONDISI BUKA (Menggunakan CSS untuk animasi) */
+.nav-menu[data-visible="true"] {
+    /* Perintah Akselerasi Hardware */
+    transform: translateX(0) translateZ(0); 
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white; 
+    border-bottom: 1px solid white;
+    transition: background 0.2s ease;
+}
+
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background: radial-gradient(circle at top right, #eaddff 0%, transparent 40%);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.main-logo {
+    width: 250px;
+    /* Sesuaikan ukuran logo */
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 15px rgba(106, 76, 147, 0.3));
+    animation: float 6s ease-in-out infinite;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.gradient-text {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Philosophy Section */
+.philosophy {
+    padding: 80px 5%;
+    background: var(--white);
+    overflow: hidden;
+    /* Mencegah scroll horizontal */
+}
+
+.container {
+    max-width: 1100px;
+    /* Sedikit lebih lebar */
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 100px;
+    /* Jarak header ke konten jauh lebih lega */
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Layout Baris (Zig-Zag) */
+.philosophy-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    /* Jarak antar filosofi sangat besar agar memenuhi layar */
+}
+
+.phil-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    min-height: 50vh;
+    /* Setiap item minimal mengisi setengah tinggi layar */
+}
+
+/* Membalik posisi untuk item genap (Zig-Zag effect) */
+.phil-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Bagian Visual (Icon Besar) */
+.phil-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Membuat lingkaran dekorasi di belakang ikon */
+.phil-visual::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(157, 126, 196, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.big-icon {
+    font-size: 8rem;
+    /* Ukuran ikon sangat besar */
+    color: var(--primary);
+    z-index: 1;
+    filter: drop-shadow(0 10px 20px rgba(106, 76, 147, 0.2));
+    transition: transform 0.5s ease;
+}
+.big-icon img {
+    height: 400px;
+    width: auto;
+}
+
+.phil-row:hover .big-icon {
+    transform: scale(1.1) rotate(5deg);
+    /* Efek saat dihover */
+}
+
+/* Bagian Konten Teks */
+.phil-content {
+    flex: 1.2;
+    /* Teks mengambil ruang sedikit lebih banyak */
+}
+
+.phil-content h3 {
+    font-size: 2rem;
+    /* Judul besar */
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #f3eafa;
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.phil-content p {
+    font-size: 1.1rem;
+    /* Teks isi lebih besar & nyaman dibaca */
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Styling khusus untuk list di bagian 'L' */
+.fancy-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.fancy-list li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    border-left: 3px solid var(--secondary);
+    font-size: 1.05rem;
+    color: #666;
+}
+
+/* Responsive: Di HP jadi tumpuk vertikal */
+@media (max-width: 768px) {
+
+    .phil-row,
+    .phil-row.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        min-height: auto;
+    }
+
+    .phil-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .big-icon {
+        font-size: 6rem;
+    }
+
+    .fancy-list li {
+        border-left: none;
+        border-bottom: 2px solid var(--secondary);
+        padding-left: 0;
+        padding-bottom: 10px;
+    }
+
+    .philosophy-wrapper {
+        gap: 80px;
+    }
+}
+
+.footer {
+  background: white;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+  /* Tambahan untuk styling footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.support-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  margin-top: 20px;
+}
+
+.support-logos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+.support-logos img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: 0.4s;
+  height: 60px;
+}
+
+.support-logos img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Scroll Reveal Animation Classes */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Smooth easing */
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Delays */
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero {
+        height: auto;
+        padding: 150px 20px 100px;
+    }
+}

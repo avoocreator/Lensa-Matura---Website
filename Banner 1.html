@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspirasi terbaru</title>
+
+    <link rel="stylesheet" href="Style/Banner 1.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <!----------- HEADER ------------->
+    <header class="header">
+        <div class="logo">
+            <img src="Material/Logo Lensa Matura - Colored.png" alt="Logo Lensa Matura"> 
+        </div>
+
+        <div class="nav-title">LENSA MATURA</div>
+
+        <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="hamburger-icon"></span>
+        </button>
+
+        <nav class="nav-menu" id="primary-navigation" data-visible="false">
+            <ul>
+                <li><a href="Beranda.html">Beranda</a></li>
+                <li><a href="Announcement.html">Pengumuman</a></li>
+                <li><a href="About Us.html">Tentang Kami</a></li>
+                <li><a href="Index.html">Keluar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-------- KETERANGAN EVENT -------->
+    <section class="hero-wrapper">
+        <div class="hero-container">
+
+            <div class="hero-content">
+                <span class="hero-tag">EVENT PAGE</span>
+
+                <h1 class="hero-title">
+                    Pengumuman: Class Meeting SMAN 1 Kraksaan
+                </h1>
+
+                <div class="hero-meta">
+                    <img src="Material/LOGO OSKAMATURA (1).png" alt="Author" class="meta-avatar">
+                    <div class="meta-text">
+                        <span class="author-name">Oskamatura</span>
+                        <span class="post-date">• 20 November 2025 • 5 min read</span>
+                    </div>
+                </div>
+
+                <!---------- 3 TOMBOL ------------>
+                <div class="hero-actions">
+                    <button class="action-btn">
+                        <i class="fa-regular fa-comment"></i>
+                        <a href="https://forms.gle/ifGRZxXvzbN9Sob87">Aspirasi</a>
+                    </button>
+                    <button class="action-btn"><i class="fa-regular fa-clipboard"></i> Evaluasi</button>
+                    <button class="action-btn share-btn" id="shareBtn"><i class="fa-solid fa-share-nodes"></i>
+                        Bagikan</button>
+                </div>
+            </div>
+
+            <!---------- GAMBAR EVENT ----------->
+            <div class="hero-right-side">
+                <div class="hero-image">
+                    <img src="Material/Banner Classmerting.jpg" alt="Hero Illustration">
+                </div>
+
+                <!------------ COUNTDOWN ------------>
+                <div class="mini-countdown-wrapper">
+                    <p class="countdown-label">Hitung Mundur Acara:</p>
+                    <div class="mini-countdown" id="countdown">
+                        <div class="mini-time-box">
+                            <span id="days">0</span> <small>Hr</small>
+                        </div>
+                        <div class="mini-time-box">
+                            <span id="hours">0</span> <small>Jam</small>
+                        </div>
+                        <div class="mini-time-box">
+                            <span id="minutes">0</span> <small>Mnt</small>
+                        </div>
+                        <div class="mini-time-box">
+                            <span id="seconds">0</span> <small>Dtk</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!------ GARIS PEMBATAS ------>
+    <hr class="section-divider">
+
+    <!------------ TENTANG KEGIATAN ------------>
+    <section class="Penjelasan-container">
+        <div class="Penjelasan">
+            <div class="Judul-Deskripsi">
+                <h2>Tentang Kegiatan</h2>
+            </div>
+            <div class="Deskripsi reveal">
+                <blockquote>
+                    "Bersakit-sakit dahulu, bersenang kemudian"
+                </blockquote>
+                <br>
+                <p>
+                    Kegiatan Class Meeting merupakan acara rutin yang dilaksanakan setelah berakhirnya Penilaian Akhir
+                    Semester sebagai bentuk penyegaran dan sarana untuk mempererat kebersamaan antar siswa. Dalam
+                    kegiatan ini, seluruh peserta didik dari berbagai kelas berpartisipasi dalam berbagai jenis
+                    perlombaan, seperti tarik tambang, futsal, ranking 1, hingga lomba seni. Selain menjadi ajang
+                    kompetisi yang seru, Class Meeting juga bertujuan menumbuhkan sikap sportivitas, meningkatkan
+                    kekompakan, serta memberi kesempatan bagi siswa untuk menyalurkan bakat dan minat mereka. Melalui
+                    kegiatan ini, diharapkan tercipta suasana yang menyenangkan, penuh kebersamaan, dan memberikan
+                    pengalaman positif sebelum siswa memasuki masa liburan semester.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!------------- TABEL RUNDOWN ------------->
+    <section class="event-table-section">
+        <h2>Rundown Kegiatan</h2>
+        <div class="table-responsive reveal">
+            <table class="event-table">
+                <thead>
+                    <tr>
+                        <th>Kegiatan</th>
+                        <th>Waktu</th>
+                        <th>Tempat</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody id="rundownTableBody">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!------ GARIS PEMBATAS ------>
+    <hr class="section-divider">
+
+    <!---------- MEKANISME EVENT ---------->
+    <section class="mekanisme">
+        <h2>Mekanisme Event</h2>
+        <div class="mekanisme-slider reveal" id="mekanismeContainer">
+        </div>
+    </section>
+
+    <!---- MEKANISME POP-UP ---->
+    <div id="mekanismePopup" class="mekanisme-popup">
+        <div class="popup-box">
+            <span class="close-popup">&times;</span>
+            <p id="popupText"></p>
+        </div>
+    </div>
+
+    <!---------- JAVASCRIPT ---------->
+    <script src="JavaScript/Banner 1.js"></script>
+
+
+    <!------------ FOOTER ------------>
+    <footer class="footer">
+        <p id="copyright"></p>
+
+        <div class="support-title">Supported by</div>
+
+        <div class="support-logos">
+            <a href="https://sman1kraksaan.sch.id/">
+                <img src="Material/LOGO SMAN 1 KRAKSAAN 2021 (2).png" alt="Logo Sekolah">
+            </a>
+            <a
+                href="https://oskamatura.or.id/?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4CGNhbGxzaXRlAjE1AAGnRUWjmjtzgsfXZTH1R37w1xVDjYrJOhqRkFFWbXSxh_SoINdqodmBU3h3uhM_aem_1ANWNKMwXLjXWLQP_HPrbA">
+                <img src="Material/LOGO OSKAMATURA (1).png" alt="Logo OSIS">
+            </a>
+        </div>
+    </footer>
+
+    <!-- FOOTER COPYRIGHT -->
+    <script src="JavaScript/Copyright.js"></script>
+    <!-- Navigasi -->
+     <script src="JavaScript/Navigation.js"></script>
+</body>
+
+</html>

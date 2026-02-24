@@ -1,0 +1,698 @@
+/* =========================================
+    1. VARIABLES & GLOBAL SETTINGS
+    ========================================= */
+:root {
+  --primary: #6F3A8A;
+  /* Diubah menjadi UNGU TUA dari logo */
+  --primary-dark: #582A6F;
+  /* Ungu sedikit lebih gelap */
+  --accent: #FFC371;
+  /* Diubah menjadi KUNING EMAS untuk kontras */
+  --bg-color: #f0f4f8;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --text-main: #2D3748;
+  --text-light: #718096;
+  --shadow-soft: 0 10px 30px -5px rgba(111, 58, 138, 0.15);
+  /* Shadow disesuaikan ke ungu */
+  --shadow-hover: 0 20px 40px -5px rgba(111, 58, 138, 0.25);
+  /* Shadow disesuaikan ke ungu */
+  --radius: 24px;
+}
+
+/* Import Font Poppins yang benar */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  /* Force Poppins */
+  background-color: var(--bg-color);
+  /* Background pattern halus disesuaikan ke ungu dan emas */
+  background-image:
+    radial-gradient(at 0% 0%, rgba(111, 58, 138, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 195, 113, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+    2. HEADER & NAVIGATION
+    ========================================= */
+/* HEADER GROUPING */
+/* Gaya Dasar (Reset sederhana) */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); /* Latar belakang untuk melihat efek blur */
+}
+
+/* ==========================================================
+// 1. HEADER & TATA LETAK
+// ========================================================== */
+.header {
+    display: flex;
+    align-items: center;
+    /* Memisahkan 3 elemen (Logo, Judul, Tombol) */
+    justify-content: space-between; 
+    padding: 15px 50px;
+    background: rgba(111, 58, 138, 0.85); /* Ungu Transparan */
+    
+    /* Efek Glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.nav-title {
+    font-size: 35px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* PENTING: Untuk memusatkan teks secara visual di Flexbox */
+    flex-grow: 1; 
+    text-align: center;
+}
+
+/* ==========================================================
+// 2. NAVIGASI HAMBURGER ICON
+// ========================================================== */
+.nav-toggle {
+    /* Hapus 'position: fixed' agar mengikuti Flexbox */
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 300;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff; /* Putih agar kontras */
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    top: 8px;
+}
+
+/* Animasi Ikon menjadi X saat terbuka */
+.nav-toggle[aria-expanded="true"] .hamburger-icon {
+    background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background: rgba(111, 58, 138, 0.95);
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    padding-top: 100px;
+    
+    /* Perintah untuk Akselerasi Hardware & Sembunyikan */
+    will-change: transform;
+    transform: translateX(100%) translateZ(0); 
+    
+    /* PENTING: Transisi yang lebih panjang (0.4s) dengan kurva yang lebih smooth */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 200;
+}
+
+/* KONDISI BUKA (Menggunakan CSS untuk animasi) */
+.nav-menu[data-visible="true"] {
+    /* Perintah Akselerasi Hardware */
+    transform: translateX(0) translateZ(0); 
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white; 
+    border-bottom: 1px solid white;
+    transition: background 0.2s ease;
+}
+
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+    3. HERO / BANNER SECTION (FIXED SIZE)
+    ========================================= */
+.Banner {
+  display: flex;
+  padding: 50px;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.Banner-left {
+  width: 60%;
+  /* DIKECILKAN: Dari 65% jadi 60% */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Slider Styles */
+.slider {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  min-width: 50%;
+  border-radius: 25px;
+  overflow: hidden;
+  background: #eee;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+  transition: 0.3s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.slide:hover img {
+  transform: scale(1.05);
+}
+
+/* Dots Navigation */
+.dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  background: #CBD5E0;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hero Right Section */
+.hero-right {
+  width: 40%;
+  /* DIKECILKAN: Dari 35% jadi 40% (agar imbang) */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.info-box {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  opacity: 0.5;
+}
+
+.info-box:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: var(--shadow-hover);
+}
+
+.info-box h1,
+.info-box h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.info-box p1,
+.info-box p2 {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-light);
+  display: block;
+  /* Fix custom tag layout */
+}
+
+/* Pink/Accent Box Variant (Diubah menjadi Ungu Gelap) */
+.info-box.pink {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+}
+
+.info-box.pink h2 {
+  color: white;
+}
+
+.info-box.pink p2 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.info-box.pink::before {
+  display: none;
+}
+
+/* =========================================
+    4. BOTTOM SECTION (Chart, Table, Calendar)
+    ========================================= */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(111, 58, 138, 0.2), transparent);
+  /* Warna ungu */
+  margin: 20px 0;
+}
+
+.bottom-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 40px 50px;
+  background-color: transparent;
+}
+
+.box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Di bagian .box h2 */
+.box h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: var(--primary);
+  /* Warna ungu */
+  font-weight: 800;
+  /* GANTI dari 600 ke 800 (lebih tebal) */
+  text-align: center;
+}
+
+/* Garis kecil di bawah judul */
+.box h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  /* Warna emas */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* --- CHART (FIXED SIZE) --- */
+/* --- CHART AESTHETICS (FIXED SIZE) --- */
+.chart-box {
+  /* Menghilangkan properti yang tidak perlu atau usang */
+  text-align: center;
+}
+
+#myChart {
+  /* CHART KINI LEBIH BESAR, tapi max-width mencegahnya melebihi container */
+  max-width: 90% !important;
+  /* Batasi maksimal 90% dari lebar box */
+  height: auto !important;
+  /* Biarkan tinggi menyesuaikan (penting) */
+  width: 100% !important;
+  /* Biarkan lebar mengisi 100% dari max-width (90%) */
+  display: block;
+  margin: 10px auto 0;
+  /* Posisikan di tengah */
+}
+
+/* --- TABLE AESTHETICS --- */
+/* === TABLE STYLE === */
+/* Ganti seluruh blok styling tabel yang lama dengan ini untuk gaya tabel modern */
+
+.table-box {
+  overflow: hidden;
+}
+
+.table-box table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  /* Jarak antar baris */
+}
+
+/* Header Tabel (Kegiatan, Peminat) */
+.table-box th {
+  background: #edf9ff;
+  color: var(--primary);
+  /* Warna ungu */
+  font-weight: 800;
+  /* Lebih tebal */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Data Table (Kolom Kegiatan & Peminat) */
+.table-box td {
+  background: white;
+  padding: 15px;
+  /* >>> UBAH NILAI FONT SIZE INI UNTUK MEMPERBESAR TULISAN <<< */
+  font-size: 16px;
+  /* Silakan ubah angka ini (misal: 18px) */
+  color: #333;
+  /* Menggunakan warna teks standar Anda */
+  border: none;
+}
+
+/* Rounded corners dan ketebalan spesifik */
+.table-box tr td:first-child {
+  border-radius: 12px 0 0 12px;
+  font-weight: 600;
+  /* Data Kegiatan */
+}
+
+.table-box tr td:last-child {
+  border-radius: 0 12px 12px 0;
+  text-align: right;
+  font-weight: 700;
+  /* Data Peminat (Angka) */
+  color: var(--primary);
+  /* Warna ungu untuk angka peminat */
+}
+
+/* Animasi dan Shadow untuk Baris Data */
+.table-box tr {
+  transition: transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.table-box tbody tr:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ANIMASI ROW SATU PER SATU --- */
+.table-box tbody tr {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: rowFade 0.45s ease-out forwards;
+}
+
+@keyframes rowFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay otomatis setiap baris */
+.table-box tbody tr:nth-child(1) {
+  animation-delay: .1s;
+}
+
+.table-box tbody tr:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.table-box tbody tr:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.table-box tbody tr:nth-child(4) {
+  animation-delay: .4s;
+}
+
+.table-box tbody tr:nth-child(5) {
+  animation-delay: .5s;
+}
+
+.table-box tbody tr:nth-child(6) {
+  animation-delay: .6s;
+}
+
+/* --- CALENDAR AESTHETICS (FIXED LAYOUT) --- */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ecf4fc;
+  padding: 10px 15px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.calendar-header button {
+  background: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.calendar-header button:hover {
+  background: var(--primary);
+  color: white;
+}
+
+#monthYear {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--primary-dark);
+}
+
+/* Di bagian .weekdays */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 700;
+  /* GANTI dari 600 ke 700 */
+  margin-top: 10px;
+  padding: 10px 0;
+  color: var(--primary);
+  /* Warna ungu */
+}
+
+.calendar-grid {
+  display: grid;
+  /* Wajib: Grid 7 kolom */
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-grid div {
+  aspect-ratio: 1/1;
+  /* Membuat kotak sempurna */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 50%;
+  /* Lingkaran */
+  font-size: 20px;
+  transition: 0.2s;
+  color: var(--text-main);
+  user-select: none;
+  font-weight: bold;
+}
+
+.calendar-grid div:hover:not(.day-cell:empty) {
+  background: #e2e8f0;
+  cursor: pointer;
+}
+
+/* Today Highlight (Diubah ke Emas) */
+.calendar-grid .today {
+  background: var(--accent) !important;
+  color: #333 !important;
+  /* Warna teks gelap agar terbaca di atas emas */
+  box-shadow: 0 4px 10px rgba(255, 195, 113, 0.5);
+  /* Shadow emas */
+}
+
+/* Event Highlight: Hapus !important agar JavaScript bisa menimpanya dengan warna dinamis */
+.event-day {
+  background: #EEEBFF; /* HAPUS !important */
+  color: var(--primary); /* HAPUS !important */
+  border: 1px solid #D5C1E0; /* HAPUS !important */
+  position: relative;
+}
+
+.event-day::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+
+/* =========================================
+    5. FOOTER
+    ========================================= */
+.footer {
+  background: white;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+  /* Tambahan untuk styling footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.support-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  margin-top: 20px;
+}
+
+.support-logos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+.support-logos img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: 0.4s;
+  height: 60px;
+}
+
+.support-logos img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .Banner {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .Banner-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .slider {
+    min-height: 200px;
+    max-height: 300px;
+  }
+
+  .bottom-container {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+
+  .header {
+    padding: 15px 20px;
+  }
+
+  .nav-title {
+    font-size: 20px;
+  }
+}
