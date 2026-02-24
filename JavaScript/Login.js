@@ -1,6 +1,6 @@
 // --- KONFIGURASI ---
 // URL Google Sheet CSV
-const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyyr_SFAYvQQhP-TtgKCErDK51cOQqBpGbOLZReMi5EaGLVKrkqesSPqAoylkjX2cYRArjpeE4c-5q/pub?output=csv'; 
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHx5NQFBWLjCqEBs0gOgBzBsj5GbEBbj3p4YLcNmkrDk7IbJ0dcKwDdE0PZdJrvxeNDzpbYth4BEEV/pub?output=csv'; 
 
 // Elemen Login
 const loginForm = document.getElementById('loginForm');
@@ -134,4 +134,5 @@ function setLoading(isLoading) {
         btnLoader.style.display = 'none';
         loginBtn.disabled = false;
     }
+
 }
